@@ -883,6 +883,23 @@ public final class InputManager {
         }
     }
 
+    public boolean injectInputEventInternal(InputEvent event, int displayId, int mode) {
+        if (event == null) {
+            throw new IllegalArgumentException("event must not be null");
+        }
+        if (mode != INJECT_INPUT_EVENT_MODE_ASYNC
+                && mode != INJECT_INPUT_EVENT_MODE_WAIT_FOR_FINISH
+                && mode != INJECT_INPUT_EVENT_MODE_WAIT_FOR_RESULT) {
+            throw new IllegalArgumentException("mode is invalid");
+        }
+
+        try {
+            return mIm.injectInputEventInternal(event, displayId, mode);
+        } catch (RemoteException ex) {
+            throw ex.rethrowFromSystemServer();
+        }
+    }
+
     /**
      * Changes the mouse pointer's icon shape into the specified id.
      *

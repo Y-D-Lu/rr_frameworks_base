@@ -595,7 +595,7 @@ public class InputManagerService extends IInputManager.Stub
         return injectInputEventInternal(event, Display.DEFAULT_DISPLAY, mode);
     }
 
-    private boolean injectInputEventInternal(InputEvent event, int displayId, int mode) {
+    public boolean injectInputEventInternal(InputEvent event, int displayId, int mode) {
         if (event == null) {
             throw new IllegalArgumentException("event must not be null");
         }
