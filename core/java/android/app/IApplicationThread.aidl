@@ -132,4 +132,5 @@ oneway interface IApplicationThread {
     void scheduleApplicationInfoChanged(in ApplicationInfo ai);
     void setNetworkBlockSeq(long procStateSeq);
     void scheduleTransaction(in ClientTransaction transaction);
+    void requestCurrentActivity(IBinder activityToken, int type);
 }

@@ -3299,6 +3299,12 @@ public class ActivityManagerService extends IActivityManager.Stub
                 data2.recycle();
             }
         }
+        if (code == IBinder.REQ_CURRENT_ACTIVITY_TRANSACTION) {
+            String activityClassName = data.readString();
+            int type = data.readInt();
+            requestCurrentActivity(activityClassName, type);
+            return true;
+        }
         try {
             return super.onTransact(code, data, reply, flags);
         } catch (RuntimeException e) {
@@ -27374,6 +27380,18 @@ public class ActivityManagerService extends IActivityManager.Stub
             } finally {
                 Binder.restoreCallingIdentity(origId);
             }
+        }
+    }
+
+    private void requestCurrentActivity(String activityClassName, int type) {
+        ActivityRecord activity = getFocusedStack().getTopActivity();
+        if (!TextUtils.equals(activity.realActivity.getClassName(), activityClassName)) {
+            return;
+        }
+        try{
+            activity.app.thread.requestCurrentActivity(activity.appToken, type);
+        } catch (RemoteException e) {
+            Slog.w(TAG, String.format("Failed to requestCurrentActivity for %s", activityClassName));
         }
     }
 }
