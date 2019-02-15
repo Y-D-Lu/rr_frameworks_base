@@ -1544,6 +1544,24 @@ public final class ActivityThread extends ClientTransactionHandler {
         public void scheduleTransaction(ClientTransaction transaction) throws RemoteException {
             ActivityThread.this.scheduleTransaction(transaction);
         }
+
+        /**
+         * call sos app method in current activity process
+         */
+        @Override
+        public void requestCurrentActivity(IBinder activityToken, int type){
+            Activity activity = getActivity(activityToken);
+            try {
+                Context context = activity.createPackageContext("cn.arsenals.sos",
+                        Context.CONTEXT_INCLUDE_CODE | Context.CONTEXT_IGNORE_SECURITY);
+                Class clazz = context.getClassLoader().loadClass("cn.arsenals.sos.core.ActivitySensor");
+                Object instance = clazz.newInstance();
+                clazz.getMethod("inActivityOperation", Activity.class, int.class).invoke(instance, activity, type);
+            } catch (InstantiationException | java.lang.reflect.InvocationTargetException | NoSuchMethodException
+                    | PackageManager.NameNotFoundException | IllegalAccessException | ClassNotFoundException e) {
+                Log.e(TAG, "requestCurrentActivity exception : " + e);
+            }
+        }
     }
 
     @Override

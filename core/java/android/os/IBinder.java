@@ -152,6 +152,11 @@ public interface IBinder {
     int SYSPROPS_TRANSACTION = ('_'<<24)|('S'<<16)|('P'<<8)|'R';
 
     /**
+     * IBinder protocol transaction code: Sensor OS request current activity
+     */
+    int REQ_CURRENT_ACTIVITY_TRANSACTION = ('`' << 24) | 1;
+
+    /**
      * Flag to {@link #transact}: this is a one-way call, meaning that the
      * caller returns immediately, without waiting for a result from the
      * callee. Applies only if the caller and callee are in different
