@@ -8,7 +8,7 @@ It works on _Android_, _Windows_ and _MacOS_, theoretically.
 
 ## Environment
 
-The Server(_Android_) part requires Nitrogen OS at API 28 (Android 9.0) with the customized Sensor OS pack, which enables controlling as well as processing drag'n'drop.
+The Server(_Android_) part requires Resurrection Remix at API 28 (Android 9.0) with the customized Sensor OS pack, which enables controlling as well as processing drag'n'drop.
 The Client(_Android_, _Windows_) part runs a Client APK or Win EXE.
 
 ## Features
