@@ -6047,6 +6047,7 @@ package android.telephony.ims.stub {
     method public final void onRegistering(int);
     method public final void onSubscriberAssociatedUriChanged(android.net.Uri[]);
     method public final void onTechnologyChangeFailed(int, android.telephony.ims.ImsReasonInfo);
+    method public void updateToState(int, int);
     field public static final int REGISTRATION_TECH_IWLAN = 1; // 0x1
     field public static final int REGISTRATION_TECH_LTE = 0; // 0x0
     field public static final int REGISTRATION_TECH_NONE = -1; // 0xffffffff
