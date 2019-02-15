@@ -48,6 +48,8 @@ interface IInputManager {
     // applications, the caller must have the INJECT_EVENTS permission.
     boolean injectInputEvent(in InputEvent ev, int mode);
 
+    boolean injectInputEventInternal(in InputEvent ev, int displayId, int mode);
+
     // Calibrate input device position
     TouchCalibration getTouchCalibrationForInputDevice(String inputDeviceDescriptor, int rotation);
     void setTouchCalibrationForInputDevice(String inputDeviceDescriptor, int rotation,
