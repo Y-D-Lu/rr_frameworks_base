@@ -1,6 +1,6 @@
 # Sensor OS
 
-This system, based on the [Nitrogen OS](https://github.com/nitrogen-project), provides secondary display and control for Android devices connected on Wi-Fi P2P.
+This system, based on the [Resurrection Remix OS](https://github.com/ResurrectionRemix), provides secondary display and control for Android devices connected on Wi-Fi P2P.
 It also provides drag'n'drap operation similiar with the [Smartisan TNT Workstation](https://www.smartisan.com/tnt/overview).
 It works on _Android_, _Windows_ and _MacOS_, theoretically.
 
